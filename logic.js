@@ -1,17 +1,17 @@
 // // Store our API endpoint as queryUrl.
-// var queryUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2021-01-01&endtime=2021-01-02&maxlongitude=-69.52148437&minlongitude=-123.83789062&maxlatitude=48.74894534&minlatitude=25.16517337";
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson";
 
 
-// // Perform a GET request to the query URL.
-// d3.json(queryUrl).then(function (data) {
-//   console.log(data.features);
-//   // Using the features array sent back in the API data, create a GeoJSON layer, and add it to the map.
+// Perform a GET request to the query URL.
+d3.json(queryUrl).then(function (data) {
+  console.log(data);
+  // Using the features array sent back in the API data, create a GeoJSON layer, and add it to the map.
 
-//   // 1.
-//   // Pass the features to a createFeatures() function:
-//   createFeatures(data.features);
+  // 1.
+  // Pass the features to a createFeatures() function:
+  // createFeatures(data.features);
 
-// });
+});
 
 // // 2. 
 // function createFeatures(earthquakeData) {
@@ -24,22 +24,22 @@
 
 
 
-//   }
+// //   }
 
-//   console.log(earthquakeData)
-//   // YOUR CODE GOES HERE
-//   // Save the earthquake data in a variable.
+// //   console.log(earthquakeData)
+// //   // YOUR CODE GOES HERE
+// //   // Save the earthquake data in a variable.
 
-//   // Pass the earthquake data to a createMap() function.
-//   var earthquakes = L.geoJSON(earthquakeData, {
+// //   // Pass the earthquake data to a createMap() function.
+// //   var earthquakes = L.geoJSON(earthquakeData, {
 
-//       onEachFeature: onEachFeature
+// //       onEachFeature: onEachFeature
 
-//   })
+// //   })
   
-//   createMap(earthquakes);
+// //   createMap(earthquakes);
 
-// }
+// // }
 
 
 // // 3.
@@ -84,4 +84,4 @@
 //   }).addTo(myMap);
 
 //   createMap(earthquakes)
-//}
+// }
