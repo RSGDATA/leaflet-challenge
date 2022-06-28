@@ -18,7 +18,7 @@ function createFeatures(earthquakeData) {
 
   function onEachFeature(feature, layer) {
 
-    layer.bindPopup(`<h3>${feature.properties.place}</h3><hr>Magnitude: $`)
+    layer.bindPopup(`<h3>${feature.properties.place}</h3><hr>Magnitude: ${feature.properties.mag}`)
 
 
     
@@ -32,6 +32,7 @@ function createFeatures(earthquakeData) {
     weight: 1,
     opacity: 1,
     fillOpacity: 0.8
+  
 };
   console.log(earthquakeData)
   // YOUR CODE GOES HERE
@@ -46,7 +47,7 @@ function createFeatures(earthquakeData) {
       },
       
       onEachFeature: onEachFeature
-      // 
+       
 
   })
 
