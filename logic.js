@@ -20,27 +20,40 @@ function createFeatures(earthquakeData) {
 
     layer.bindPopup(`<h3>${feature.properties.place}</h3><hr>Magnitude: ${feature.properties.mag}`)
 
-
-    
-
-
   }
-  var geojsonMarkerOptions = {
-    radius: 8,
-    fillColor: "#ff7800",
-    color: "#000",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-  
-};
+  function changeColor(feature) {
+    if (feature.geometry.coordinates[2] > 2)
+    return "black"
+    else if (feature.geometry.coordinates[2] > 1)
+    return "orange"
+    else
+    return "red"
+  }
+  function geojsonMarkerOptions(feature) {
+     return { 
+      radius: feature.properties.mag,
+      fillColor: changeColor(feature),
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+      
+  }
+}
   console.log(earthquakeData)
   // YOUR CODE GOES HERE
   // Save the earthquake data in a variable.
 
   // Pass the earthquake data to a createMap() function.
   var earthquakes = L.geoJSON(earthquakeData, {
-     pointToLayer: function (feature, latlng) {
+    style: geojsonMarkerOptions,
+
+     
+     
+    
+      
+     
+    pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, geojsonMarkerOptions)
         
     
