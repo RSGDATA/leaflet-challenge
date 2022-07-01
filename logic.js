@@ -32,8 +32,6 @@ function createFeatures(earthquakeData) {
     return "rgba(244, 185, 8, 0.8)"
     else if (feature.geometry.coordinates[2] >= 70 && feature.geometry.coordinates[2]<= 90)
     return "rgba(244, 131, 8, 0.8)"
-    else if (feature.geometry.coordinates[2] >= 70 && feature.geometry.coordinates[2]<= 90)
-    return "rgba(244, 82, 8, 0.8)"
     else
     return "rgba(244, 8, 8, 0.8)"
   }
@@ -125,6 +123,40 @@ function createMap(earthquakes) {
     zoom: 5,
     layers: [street, earthquakes]
   });
+
+  function newColor(feature) {
+    if (feature == '-10-10' )
+    return "rgba(33, 244, 8, 0.8)"
+    else if (feature == '10-30')
+    return "rgba(151, 244, 8, 0.8)"
+    else if (feature == '30-50')
+    return "rgba(214, 244, 8, 0.8)"
+    else if (feature == '50-70')
+    return "rgba(244, 185, 8, 0.8)"
+    else if (feature == '70-90')
+    return "rgba(244, 131, 8, 0.8)"
+    else
+    return "rgba(244, 8, 8, 0.8)"
+  }
+var legend = L.control({position: 'bottomright'});
+
+
+legend.onAdd = function (map) {
+    var legendDiv =  L.DomUtil.create('div', 'info legend'),
+       checkins = ['-10-10', '10-30', '30-50', '50-70','70-90', '90+'],
+       title= ['<strong>Marker Color Codes</strong>'],
+        labels = [];
+    for ( var i=0; i < checkins.length; i++) {
+        labels.push( 
+            '<i class="square" style="background:' + newColor(checkins[i]) + '"></i>'+ checkins[i] + '')
+    }
+    legendDiv.innerHTML = labels.join('<br>');
+
+
+    return legendDiv;
+}
+
+legend.addTo(myMap);
   
   // Create a layer control that contains our baseMaps.
   // Be sure to add an overlay Layer that contains the earthquake GeoJSON.

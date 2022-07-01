@@ -9,7 +9,7 @@ html {
   height: 100%;
 }
 
-.legend {
+/* .legend {
   padding: 10px;
   font-family: Sanchez, serif;
   font-size: 16px;
@@ -19,8 +19,31 @@ html {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+} */
+.legend { 
+  border: 5px solid white;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  width: 90px;
+  height: 105px;
+  line-height: 18px;
+  background: white;
+  opacity: 1;
 }
-
+.legend i {
+      width: 15px;
+      height: 15px;
+      float: left;
+      margin-right: 8px;
+      opacity: 1;
+}
+.legend square {
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      margin-top: 8px;
+}
 
 
 
